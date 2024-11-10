@@ -10,6 +10,7 @@ export function ExternalLink({ href, ...rest }: Props) {
     <Link
       target="_blank"
       {...rest}
+      // @ts-expect-error href only support typed route such as /(tabs) or +not-found
       href={href}
       onPress={async (event) => {
         if (Platform.OS !== "web") {
