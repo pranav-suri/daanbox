@@ -71,7 +71,7 @@ export default function DonateScreen() {
 
       // If image selection is successful
       if (result.assets?.length) {
-        setImageUri(result.assets[0].fileName); // Set the image URI if an image is selected
+        setImageUri(result.assets[0].uri); // Set the image URI if an image is selected
 
         // Extract image name from URI if URI is defined
         const fileName = result.assets[0].fileName;
@@ -83,6 +83,15 @@ export default function DonateScreen() {
       console.error("Error selecting image:", error);
       Alert.alert("Error", "An error occurred while selecting the image.");
     }
+  };
+
+  // Function to reset the form
+  const resetForm = () => {
+    setItemName("");
+    setDescription("");
+    setAddress("");
+    setImageUri(null);
+    setImageName(null);
   };
 
   return (
@@ -131,6 +140,7 @@ export default function DonateScreen() {
         style={styles.input}
       />
 
+      {/* Submit Button */}
       <Button
         mode="contained"
         onPress={handleDonate}
@@ -140,6 +150,15 @@ export default function DonateScreen() {
         disabled={loading}
       >
         Submit Donation
+      </Button>
+
+      {/* Reset Button to edit the form */}
+      <Button
+        mode="outlined"
+        onPress={resetForm}
+        style={styles.button}
+      >
+        Reset Form
       </Button>
     </View>
   );
