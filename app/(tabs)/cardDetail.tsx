@@ -1,7 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, Button, ScrollView } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useCardContext } from "@/context/cardContext";
 export default function CardDetail() {
+  const { cardState } = useCardContext();
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -11,21 +14,13 @@ export default function CardDetail() {
 
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.imageContainer}>
-          <Image
-            source={{
-              uri: "https://fitmaxstore.com/wp-content/uploads/2023/04/Nebulizer-machine-components-including-masks-and-tubes.jpg",
-            }}
-            style={styles.image}
-          />
+          {cardState.imageUri && (
+            <Image source={{ uri: cardState.imageUri }} style={styles.image} />
+          )}
         </View>
-        <Text style={styles.title}>Nebulizer</Text>
-        <Text style={styles.donor}>Donated By: User@gmail.com</Text>
-        <Text style={styles.descriptionTitle}>Product Description:</Text>
-        <Text style={styles.descriptionText}>
-          This nebulizer is in excellent, gently used condition. It has been thoroughly cleaned and
-          tested to ensure full functionality. The device shows minimal signs of wear, and all
-          essential components, such as the mouthpiece, mask, and tubing, are included.
-        </Text>
+        <Text style={styles.title}>{cardState.title}</Text>
+        <Text style={styles.location}>{cardState.location}</Text>
+        <Text style={styles.descriptionText}>{cardState.description}</Text>
         <View style={styles.buttonContainer}>
           <Button title="Request Item" color="#E74C3C" onPress={() => alert("Item Requested!")} />
         </View>
@@ -62,7 +57,7 @@ const styles = StyleSheet.create({
     color: "#888",
     marginBottom: 16,
   },
-  descriptionTitle: {
+  location: {
     fontSize: 18,
     fontWeight: "600",
     marginBottom: 8,
@@ -94,4 +89,3 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-

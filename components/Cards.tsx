@@ -2,10 +2,12 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
-interface CardProps {
+export interface CardProps {
+  id?: string;
   imageUri: string;
   title: string;
   location: string;
+  description?: string;
 }
 
 const Card: React.FC<CardProps> = ({ imageUri, title, location }) => {
@@ -48,4 +50,3 @@ const styles = StyleSheet.create({
 });
 
 export default Card;
-

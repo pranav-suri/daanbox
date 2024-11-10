@@ -1,31 +1,30 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { Collapsible } from "@/components/Collapsible";
-import { ExternalLink } from "@/components/ExternalLink";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from "react-native";
 import Card from "@/components/Cards";
 import { router } from "expo-router";
-
-import { Pressable } from "react-native-paper/lib/typescript/components/TouchableRipple/Pressable";
+import { useCardContext } from "@/context/cardContext";
 
 const urlarray = [
   {
+    id: "1",
     url: "https://media.seniority.in/catalog/product/cache/242b55c74bcaf9102cfc5599e255893a/g/a/ga1_6739.jpg",
     title: "wheelchair",
     location: "pune,pune",
+    description:
+      "This wheelchair is in excellent, gently used condition. It has been thoroughly cleaned and tested to ensure full functionality. The device shows minimal signs of wear, and all essential components, such as the mouthpiece, mask, and tubing, are included.",
   },
   {
+    id: "2",
     url: "https://fitmaxstore.com/wp-content/uploads/2023/04/Nebulizer-machine-components-including-masks-and-tubes.jpg",
     title: "NEbula",
     location: "pune,pune",
+    description:
+      "This nebulizer is in excellent, gently used condition. It has been thoroughly cleaned and tested to ensure full functionality. The device shows minimal signs of wear, and all essential components, such as the mouthpiece, mask, and tubing, are included.",
   },
 ];
 
 export default function TabTwoScreen() {
-  const navigation = useNavigation();
+  const { setCardState } = useCardContext();
 
   return (
     <View style={styles.container}>
@@ -42,16 +41,16 @@ export default function TabTwoScreen() {
           return (
             <TouchableOpacity
               key={index}
-              onPress={() =>
-                router.push({
-                  pathname: "/(tabs)/card_Detail",
-                  params: {
-                    imageUri: card_info.url,
-                    title: card_info.title,
-                    location: card_info.location,
-                  },
-                })
-              }
+              onPress={() => {
+                router.push("/(tabs)/cardDetail");
+                setCardState({
+                  id: card_info.id,
+                  imageUri: card_info.url,
+                  title: card_info.title,
+                  location: card_info.location,
+                  description: card_info.description,
+                });
+              }}
             >
               <Card
                 imageUri={card_info.url}
@@ -118,4 +117,3 @@ const styles = StyleSheet.create({
     borderTopColor: "#ccc",
   },
 });
-
