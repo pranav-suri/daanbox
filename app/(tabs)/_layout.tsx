@@ -33,6 +33,36 @@ export default function TabLayout() {
           ),
         }}
       />
+      {/* Login Page Tab */}
+      <Tabs.Screen
+        name="login"
+        options={{
+          title: "Login",
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? "log-in" : "log-in-outline"} color={color} />
+          ),
+        }}
+      />
+      {/* Donate Page Tab */}
+      <Tabs.Screen
+        name="donate"
+        options={{
+          title: "Donate",
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? "heart" : "heart-outline"} color={color} />
+          ),
+        }}
+      />
+      {/* Signup Page Tab */}
+      <Tabs.Screen
+        name="signup"
+        options={{
+          title: "Signup",
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? "person-add" : "person-add-outline"} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
