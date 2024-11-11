@@ -61,7 +61,7 @@ export default function LoginPage() {
         Login
       </Button>
       <View style={styles.footer}>
-        <Link href="/(tabs)/signup" style={styles.link}>
+        <Link href="/(auth)/signup" style={styles.link}>
           <Text>Don't have an account?</Text>
           <Text> Register Here</Text>
         </Link>
@@ -69,3 +69,4 @@ export default function LoginPage() {
     </View>
   );
 }
+

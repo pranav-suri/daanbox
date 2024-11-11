@@ -1,10 +1,10 @@
 import { Tabs } from "expo-router";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-
+import { useRouter } from "expo-router";
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
@@ -34,7 +34,7 @@ export default function TabLayout() {
         }}
       />
       {/* Login Page Tab */}
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="login"
         options={{
           title: "Login",
@@ -42,7 +42,7 @@ export default function TabLayout() {
             <TabBarIcon name={focused ? "log-in" : "log-in-outline"} color={color} />
           ),
         }}
-      />
+      /> */}
       {/* Donate Page Tab */}
       <Tabs.Screen
         name="donate"
@@ -54,7 +54,7 @@ export default function TabLayout() {
         }}
       />
       {/* Signup Page Tab */}
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="signup"
         options={{
           title: "Signup",
@@ -62,7 +62,8 @@ export default function TabLayout() {
             <TabBarIcon name={focused ? "person-add" : "person-add-outline"} color={color} />
           ),
         }}
-      />
+      /> */}
     </Tabs>
   );
 }
+

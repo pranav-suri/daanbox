@@ -42,7 +42,7 @@ export default function SignupScreen() {
           role: "user", // Default role
         });
         Alert.alert("Registration Successful", "You can now log in.");
-        router.push("/(tabs)/login");
+        router.push("/(auth)/login");
       })
       .catch((error) => {
         console.error("Error during registration:", error);
@@ -102,3 +102,4 @@ export default function SignupScreen() {
     </View>
   );
 }
+
